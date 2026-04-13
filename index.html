@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>音源配布サイト</title>
   <link rel="stylesheet" href="style.css" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991340076627705"
-     crossorigin="anonymous"></script>
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9991340076627705"
+    crossorigin="anonymous"
+  ></script>
 </head>
 <body>
   <header class="topbar">
@@ -38,101 +41,81 @@
       </div>
       <div id="categorySections"></div>
     </section>
+
     <section class="section-block">
-  <div class="section-title-row">
-    <h2>お問い合わせ</h2>
-    <span class="section-sub">ご連絡はこちらから</span>
-  </div>
+      <div class="section-title-row">
+        <h2>お問い合わせ</h2>
+        <span class="section-sub">ご連絡はこちらから</span>
+      </div>
 
-  <form id="contact-form">
-    <input type="text" name="user_name" placeholder="名前" required />
-    <br><br>
-    <input type="email" name="user_email" placeholder="メールアドレス" required />
-    <br><br>
-    <textarea name="message" placeholder="内容" required></textarea>
-    <br><br>
-    <button type="submit">送信</button>
-  </form>
-</section>
+      <form id="contact-form">
+        <input
+          type="text"
+          name="user_name"
+          placeholder="名前"
+          required
+        />
+        <br /><br />
 
-    <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        <input
+          type="email"
+          name="user_email"
+          placeholder="メールアドレス"
+          required
+        />
+        <br /><br />
 
-const firebaseConfig = {
-  apiKey: "ここにAPIキー",
-  authDomain: "ここにドメイン",
-  projectId: "ここにID",
-};
+        <textarea
+          name="message"
+          placeholder="内容"
+          required
+        ></textarea>
+        <br /><br />
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-const form = document.getElementById("contact-form");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const email = form.user_email.value;
-
-  const actionCodeSettings = {
-    url: "https://nagisa0711.github.io/send.html",
-    handleCodeInApp: true,
-  };
-
-  try {
-    await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-
-    localStorage.setItem("emailForSignIn", email);
-
-    alert("確認メール送った！");
-  } catch (error) {
-    console.error(error);
-    alert("失敗");
-  }
-});
-</script>
-    
+        <button type="submit">送信</button>
+      </form>
+    </section>
   </main>
 
   <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "ここにAPIキー",
-  authDomain: "ここにauthDomain",
-  projectId: "ここにprojectId",
-  appId: "ここにappId"
-};
+    const firebaseConfig = {
+      apiKey: "AIzaSyB85JHieDeCFR-6IUxe80nztxRtJYdL8dw",
+      authDomain: "mail-auth-system.firebaseapp.com",
+      projectId: "mail-auth-system",
+      appId: "1:704724659793:web:532bce406ae145c1035270"
+    };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-const form = document.getElementById("contact-form");
+    const form = document.getElementById("contact-form");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    if (form) {
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-  const email = form.user_email.value.trim();
+        const email = form.user_email.value.trim();
 
-  const actionCodeSettings = {
-    url: "https://nagisa0711.github.io/send.html",
-    handleCodeInApp: true
-  };
+        const actionCodeSettings = {
+          url: "https://nagisa0711.github.io/send.html",
+          handleCodeInApp: true
+        };
 
-  try {
-    await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-    localStorage.setItem("emailForSignIn", email);
-    alert("確認メールを送りました。メール内のリンクから続けてください。");
-  } catch (error) {
-    console.error(error);
-    alert("認証メールの送信に失敗しました。");
-  }
-});
-</script>
+        try {
+          await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+          localStorage.setItem("emailForSignIn", email);
+          alert("確認メールを送りました。メール内のリンクから続けてください。");
+        } catch (error) {
+          console.error(error);
+          alert("認証メールの送信に失敗しました。");
+        }
+      });
+    }
+  </script>
 
   <script type="module" src="script.js"></script>
 </body>
-  
 </html>
