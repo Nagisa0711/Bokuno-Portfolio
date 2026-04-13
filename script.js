@@ -325,31 +325,3 @@ searchInput.addEventListener("input", e => {
 });
 
 render();
-
-import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/+esm';
-
-emailjs.init({
-  publicKey: 'R0sZOGBqMYOUXXfxG'
-});
-
-const form = document.getElementById('contact-form');
-
-if (form) {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    try {
-      await emailjs.sendForm(
-        'service_aytloci',
-        'template_aipskd5',
-        form
-      );
-
-      alert('送信成功');
-      form.reset();
-    } catch (error) {
-      console.error(error);
-      alert('送信失敗');
-    }
-  });
-}
