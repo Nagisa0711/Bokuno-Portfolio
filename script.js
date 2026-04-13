@@ -329,7 +329,7 @@ render();
 import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/+esm';
 
 emailjs.init({
-  publicKey: 'ここにPublicKey'
+  publicKey: 'R0sZOGBqMYOUXXfxG'
 });
 
 const form = document.getElementById('contact-form');
@@ -340,8 +340,8 @@ if (form) {
 
     try {
       await emailjs.sendForm(
-        'ここにServiceID',
-        'ここにTemplateID',
+        'service_aytloci',
+        'template_aipskd5',
         form
       );
 
