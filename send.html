@@ -1,0 +1,20 @@
+<section class="section-block">
+  <div class="section-title-row">
+    <h2>認証後の送信ページ</h2>
+    <span class="section-sub">認証済みユーザーのみ送信できます</span>
+  </div>
+
+  <p id="auth-status">認証状態を確認中...</p>
+
+  <form id="verified-send-form" hidden>
+    <input type="text" name="user_name" id="user_name" placeholder="名前" required />
+    <br><br>
+    <input type="email" name="user_email" id="user_email" placeholder="メールアドレス" required />
+    <br><br>
+    <textarea name="message" id="message" placeholder="内容" required></textarea>
+    <br><br>
+    <button type="submit">送信</button>
+  </form>
+</section>
+
+<script type="module" src="send.js"></script>
