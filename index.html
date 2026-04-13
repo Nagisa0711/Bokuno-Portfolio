@@ -95,6 +95,44 @@ form.addEventListener("submit", async (e) => {
     
   </main>
 
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "ここにAPIキー",
+  authDomain: "ここにauthDomain",
+  projectId: "ここにprojectId",
+  appId: "ここにappId"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = form.user_email.value.trim();
+
+  const actionCodeSettings = {
+    url: "https://nagisa0711.github.io/send.html",
+    handleCodeInApp: true
+  };
+
+  try {
+    await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+    localStorage.setItem("emailForSignIn", email);
+    alert("確認メールを送りました。メール内のリンクから続けてください。");
+  } catch (error) {
+    console.error(error);
+    alert("認証メールの送信に失敗しました。");
+  }
+});
+</script>
+
   <script type="module" src="script.js"></script>
 </body>
+  
 </html>
