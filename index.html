@@ -54,6 +54,44 @@
     <button type="submit">送信</button>
   </form>
 </section>
+
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "ここにAPIキー",
+  authDomain: "ここにドメイン",
+  projectId: "ここにID",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = form.user_email.value;
+
+  const actionCodeSettings = {
+    url: "https://nagisa0711.github.io/send.html",
+    handleCodeInApp: true,
+  };
+
+  try {
+    await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+
+    localStorage.setItem("emailForSignIn", email);
+
+    alert("確認メール送った！");
+  } catch (error) {
+    console.error(error);
+    alert("失敗");
+  }
+});
+</script>
     
   </main>
 
