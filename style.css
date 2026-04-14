@@ -161,3 +161,43 @@ body {
   color: #95a0b6;
   background: #151922;
 }
+
+.contact-entry-section {
+  margin-top: 40px;
+}
+
+.contact-entry-box {
+  margin-top: 16px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  text-align: center;
+}
+
+.contact-entry-text {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  color: #ddd;
+}
+
+.mail-confirm-button {
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #ffffff;
+  color: #111;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.mail-confirm-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.mail-confirm-button:active {
+  transform: translateY(0);
+}
