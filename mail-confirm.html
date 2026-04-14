@@ -1,80 +1,60 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>メール確認</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+  import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-  <h1>メールアドレス入力</h1>
-  <p>確認メールを送信します</p>
+  const firebaseConfig = {
+    apiKey: "AIzaSyB85JHieDeCFR-6IUxe80nztxRtJYdL8dw",
+    authDomain: "mail-auth-system.firebaseapp.com",
+    projectId: "mail-auth-system",
+    appId: "1:704724659793:web:532bce406ae145c1035270"
+  };
 
-  <form id="mail-auth-form">
-    <input
-      type="email"
-      id="user_email"
-      placeholder="メールアドレス"
-      required
-    />
-    <br><br>
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-    <button type="submit">確認メールを送る</button>
-  </form>
+  const form = document.getElementById("mail-auth-form");
+  const emailInput = document.getElementById("user_email");
+  const result = document.getElementById("result");
+  const submitButton = form.querySelector('button[type="submit"]');
 
-  <p id="result"></p>
+  let isSending = false;
 
-  <!-- 🔥 Firebase処理 -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyB85JHieDeCFR-6IUxe80nztxRtJYdL8dw",
-      authDomain: "mail-auth-system.firebaseapp.com",
-      projectId: "mail-auth-system",
-      appId: "1:704724659793:web:532bce406ae145c1035270"
+    if (isSending) return;
+
+    const email = emailInput.value.trim();
+
+    if (!email) {
+      result.textContent = "メールアドレスを入力してください。";
+      return;
+    }
+
+    const actionCodeSettings = {
+      url: "https://nagisa0711.github.io/send.html",
+      handleCodeInApp: true
     };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+    try {
+      isSending = true;
+      submitButton.disabled = true;
+      submitButton.textContent = "送信中...";
+      result.textContent = "";
 
-    const form = document.getElementById("mail-auth-form");
-    const emailInput = document.getElementById("user_email");
-    const result = document.getElementById("result");
+      await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+      localStorage.setItem("emailForSignIn", email);
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const email = emailInput.value.trim();
-
-      if (!email) {
-        result.textContent = "メールアドレスを入力してください";
-        return;
-      }
-
-      // 🔴 ここ重要：send.htmlのURL
-      const actionCodeSettings = {
-        url: "https://nagisa0711.github.io/send.html",
-        handleCodeInApp: true
-      };
-
-      try {
-        await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-
-        localStorage.setItem("emailForSignIn", email);
-
-        result.textContent = "確認メールを送りました。迷惑メールも確認してください。";
-
-      } catch (error) {
-        console.error("エラー:", error);
-
-        // 🔥 原因表示
-        result.textContent = `${error.code} / ${error.message}`;
-      }
-    });
-  </script>
-
-</body>
-</html>
+      result.textContent = "確認メールを送りました。迷惑メールも確認してください。";
+    } catch (error) {
+      console.error(error);
+      result.textContent = `${error.code} / ${error.message}`;
+    } finally {
+      setTimeout(() => {
+        isSending = false;
+        submitButton.disabled = false;
+        submitButton.textContent = "確認メールを送る";
+      }, 5000);
+    }
+  });
+</script>
