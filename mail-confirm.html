@@ -2,38 +2,30 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>メール確認 | 音源配布サイト</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>メール確認</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="topbar">
-    <h1>メール確認</h1>
-    <p>認証用リンクをメールに送信します</p>
-  </header>
 
-  <main class="container">
-    <section class="section-block">
-      <div class="section-title-row">
-        <h2>メールアドレス入力</h2>
-        <span class="section-sub">確認メールを送信します</span>
-      </div>
+  <h1>メールアドレス入力</h1>
+  <p>確認メールを送信します</p>
 
-      <form id="mail-auth-form">
-        <input
-          type="email"
-          id="user_email"
-          placeholder="メールアドレスを入力"
-          required
-        />
-        <br /><br />
-        <button type="submit" class="mail-confirm-button">確認メールを送る</button>
-      </form>
+  <form id="mail-auth-form">
+    <input
+      type="email"
+      id="user_email"
+      placeholder="メールアドレス"
+      required
+    />
+    <br><br>
 
-      <p id="mail-result" class="contact-entry-text"></p>
-    </section>
-  </main>
+    <button type="submit">確認メールを送る</button>
+  </form>
 
+  <p id="result"></p>
+
+  <!-- 🔥 Firebase処理 -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -50,7 +42,7 @@
 
     const form = document.getElementById("mail-auth-form");
     const emailInput = document.getElementById("user_email");
-    const result = document.getElementById("mail-result");
+    const result = document.getElementById("result");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -58,10 +50,11 @@
       const email = emailInput.value.trim();
 
       if (!email) {
-        result.textContent = "メールアドレスを入力してください。";
+        result.textContent = "メールアドレスを入力してください";
         return;
       }
 
+      // 🔴 ここ重要：send.htmlのURL
       const actionCodeSettings = {
         url: "https://nagisa0711.github.io/send.html",
         handleCodeInApp: true
@@ -69,13 +62,19 @@
 
       try {
         await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+
         localStorage.setItem("emailForSignIn", email);
-        result.textContent = "確認メールを送りました。メール内のリンクを開いて続けてください。";
+
+        result.textContent = "確認メールを送りました。迷惑メールも確認してください。";
+
       } catch (error) {
-        console.error("メール送信エラー:", error);
-        result.textContent = "認証メールの送信に失敗しました。設定を確認してください。";
+        console.error("エラー:", error);
+
+        // 🔥 原因表示
+        result.textContent = `${error.code} / ${error.message}`;
       }
     });
   </script>
+
 </body>
 </html>
