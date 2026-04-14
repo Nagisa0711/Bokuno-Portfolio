@@ -9,26 +9,28 @@
 <body>
   <header class="topbar">
     <h1>メール確認</h1>
-    <p>認証メールを送信します</p>
+    <p>認証用リンクをメールに送信します</p>
   </header>
 
   <main class="container">
     <section class="section-block">
       <div class="section-title-row">
         <h2>メールアドレス入力</h2>
-        <span class="section-sub">確認リンクを送信します</span>
+        <span class="section-sub">確認メールを送信します</span>
       </div>
 
       <form id="mail-auth-form">
         <input
           type="email"
           id="user_email"
-          placeholder="メールアドレス"
+          placeholder="メールアドレスを入力"
           required
         />
         <br /><br />
-        <button type="submit">確認メールを送る</button>
+        <button type="submit" class="mail-confirm-button">確認メールを送る</button>
       </form>
+
+      <p id="mail-result" class="contact-entry-text"></p>
     </section>
   </main>
 
@@ -47,11 +49,18 @@
     const auth = getAuth(app);
 
     const form = document.getElementById("mail-auth-form");
+    const emailInput = document.getElementById("user_email");
+    const result = document.getElementById("mail-result");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const email = document.getElementById("user_email").value.trim();
+      const email = emailInput.value.trim();
+
+      if (!email) {
+        result.textContent = "メールアドレスを入力してください。";
+        return;
+      }
 
       const actionCodeSettings = {
         url: "https://nagisa0711.github.io/send.html",
@@ -61,10 +70,10 @@
       try {
         await sendSignInLinkToEmail(auth, email, actionCodeSettings);
         localStorage.setItem("emailForSignIn", email);
-        alert("確認メールを送りました。メール内のリンクから続けてください。");
+        result.textContent = "確認メールを送りました。メール内のリンクを開いて続けてください。";
       } catch (error) {
-        console.error(error);
-        alert("認証メールの送信に失敗しました。");
+        console.error("メール送信エラー:", error);
+        result.textContent = "認証メールの送信に失敗しました。設定を確認してください。";
       }
     });
   </script>
