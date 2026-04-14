@@ -42,76 +42,30 @@
       <div id="categorySections"></div>
     </section>
 
-    <section class="section-block">
+    <section class="section-block contact-entry-section">
       <div class="section-title-row">
-        <h2>お問い合わせ</h2>
-        <span class="section-sub">ご連絡はこちらから</span>
+        <h2>音源投稿・お問い合わせ</h2>
+        <span class="section-sub">メール確認ページから進めます</span>
       </div>
 
-      <form id="contact-form">
-        <input
-          type="text"
-          name="user_name"
-          placeholder="名前"
-          required
-        />
-        <br /><br />
+      <div class="contact-entry-box">
+        <p class="contact-entry-text">
+          音源投稿やお問い合わせをご希望の方は、下のボタンからメール確認ページへ進んでください。
+        </p>
 
-        <input
-          type="email"
-          name="user_email"
-          placeholder="メールアドレス"
-          required
-        />
-        <br /><br />
-
-        <textarea
-          name="message"
-          placeholder="内容"
-          required
-        ></textarea>
-        <br /><br />
-
-        <button type="submit">送信</button>
-      </form>
+        <button id="goToMailConfirmBtn" class="mail-confirm-button" type="button">
+          メール確認ページへ進む
+        </button>
+      </div>
     </section>
   </main>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-    import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+  <script>
+    const goToMailConfirmBtn = document.getElementById("goToMailConfirmBtn");
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyB85JHieDeCFR-6IUxe80nztxRtJYdL8dw",
-      authDomain: "mail-auth-system.firebaseapp.com",
-      projectId: "mail-auth-system",
-      appId: "1:704724659793:web:532bce406ae145c1035270"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    const form = document.getElementById("contact-form");
-
-    if (form) {
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const email = form.user_email.value.trim();
-
-        const actionCodeSettings = {
-          url: "https://nagisa0711.github.io/send.html",
-          handleCodeInApp: true
-        };
-
-        try {
-          await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-          localStorage.setItem("emailForSignIn", email);
-          alert("確認メールを送りました。メール内のリンクから続けてください。");
-        } catch (error) {
-          console.error(error);
-          alert("認証メールの送信に失敗しました。");
-        }
+    if (goToMailConfirmBtn) {
+      goToMailConfirmBtn.addEventListener("click", () => {
+        window.location.href = "mail-confirm.html";
       });
     }
   </script>
