@@ -9,10 +9,10 @@ import {
 import emailjs from "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/+esm";
 
 const firebaseConfig = {
-  apiKey: "ここにAPIキー",
-  authDomain: "ここにauthDomain",
-  projectId: "ここにprojectId",
-  appId: "ここにappId"
+  apiKey: "AIzaSyB85JHieDeCFR-6IUxe80nztxRtJYdL8dw",
+  authDomain: "mail-auth-system.firebaseapp.com",
+  projectId: "mail-auth-system",
+  appId: "1:704724659793:web:532bce406ae145c1035270"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -20,33 +20,32 @@ const auth = getAuth(app);
 
 // EmailJS
 emailjs.init({
-  publicKey: "ここにPublicKey"
+  publicKey: "R0sZOGBqMYOUXXfxG"
 });
 
-const SERVICE_ID = "ここにServiceID";
-const TEMPLATE_ID = "ここにTemplateID";
+const SERVICE_ID = "service_aytloci";
+const TEMPLATE_ID = "template_aipskd5";
 
 const status = document.getElementById("auth-status");
 const form = document.getElementById("verified-send-form");
 const emailInput = document.getElementById("user_email");
 
-// 🔐 認証チェック
 function showForm(user) {
   status.textContent = "認証成功: " + user.email;
   form.hidden = false;
-
-  emailInput.value = user.email;
+  emailInput.value = user.email || "";
   emailInput.readOnly = true;
 }
 
-function lock() {
+function lock(message = "未認証です。メールのリンクからアクセスしてください") {
   form.hidden = true;
-  status.textContent = "未認証です。メールのリンクからアクセスしてください";
+  status.textContent = message;
 }
 
-// 🔥 認証処理
 async function handleSignIn() {
-  if (!isSignInWithEmailLink(auth, window.location.href)) return;
+  if (!isSignInWithEmailLink(auth, window.location.href)) {
+    return false;
+  }
 
   let email = localStorage.getItem("emailForSignIn");
 
@@ -54,33 +53,49 @@ async function handleSignIn() {
     email = prompt("メールアドレスを入力してください");
   }
 
+  if (!email || !email.trim()) {
+    lock("メールアドレスが入力されていません");
+    return true;
+  }
+
   try {
-    const result = await signInWithEmailLink(auth, email, window.location.href);
+    const result = await signInWithEmailLink(auth, email.trim(), window.location.href);
     localStorage.removeItem("emailForSignIn");
     showForm(result.user);
+    return true;
   } catch (err) {
     console.error(err);
-    status.textContent = "認証失敗";
+    lock("認証失敗: " + (err.code || "unknown-error"));
+    return true;
   }
 }
 
-// 状態監視
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    showForm(user);
-  } else {
-    lock();
-  }
-});
+async function init() {
+  form.hidden = true;
+  status.textContent = "認証状態を確認中...";
 
-handleSignIn();
+  const handled = await handleSignIn();
+
+  // メールリンク処理をしていない通常アクセス時だけ監視で分岐
+  if (!handled) {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        showForm(user);
+      } else {
+        lock();
+      }
+    });
+  }
+}
+
+init();
 
 // 📩 送信
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   if (!auth.currentUser) {
-    alert("認証されてません");
+    alert("認証されていません");
     return;
   }
 
@@ -89,8 +104,8 @@ form.addEventListener("submit", async (e) => {
     alert("送信成功");
     form.reset();
 
-    // メールは戻す
-    emailInput.value = auth.currentUser.email;
+    emailInput.value = auth.currentUser.email || "";
+    emailInput.readOnly = true;
   } catch (err) {
     console.error(err);
     alert("送信失敗");
