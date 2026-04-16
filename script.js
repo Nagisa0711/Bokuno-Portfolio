@@ -313,7 +313,7 @@ const audioData = [
     tags: ["#electronic", "#error", "#wrong", "#ui", "#電子音", "#エラー音", "#失敗音", "#警告音"],
     category: "electronic"
   } 
-];
+  ];
 
 const searchInput = document.getElementById("searchInput");
 const latestList = document.getElementById("latestList");
