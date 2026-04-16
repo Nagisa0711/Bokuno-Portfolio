@@ -176,7 +176,7 @@ const audioData = [
     tags: ["#stationery", "#paper", "#tear", "#紙", "#破る"],
     category: "paper"
   },
-   {
+  {
     title: "turn the page",
     description: "ページをめくる音",
     file: "audio/stationery/paper/turn the page.wav",
@@ -221,8 +221,8 @@ const audioData = [
     file: "audio/stationery/pen/write2.wav",
     tags: ["#stationery", "#pen", "#write", "#paper", "#ペン", "#書く"],
     category: "pen"
-  }
-  
+  },
+
   // =========================
   // electronic
   // =========================
@@ -230,28 +230,28 @@ const audioData = [
   {
     title: "button 1",
     description: "UIのボタン操作音",
-    file: "audio/electronic/button/button 1.wav",
+    file: "audio/electronic/button/button1.wav",
     tags: ["#electronic", "#ui", "#button", "#click", "#電子音", "#操作音", "#ボタン", "#クリック"],
     category: "electronic"
   },
   {
     title: "button 2",
     description: "UIのボタン操作音",
-    file: "audio/electronic/button/button 2.wav",
+    file: "audio/electronic/button/button2.wav",
     tags: ["#electronic", "#ui", "#button", "#click", "#電子音", "#操作音", "#ボタン", "#クリック"],
     category: "electronic"
   },
   {
     title: "button 3",
     description: "UIのボタン操作音",
-    file: "audio/electronic/button/button 3.wav",
+    file: "audio/electronic/button/button3.wav",
     tags: ["#electronic", "#ui", "#button", "#click", "#電子音", "#操作音", "#ボタン", "#クリック"],
     category: "electronic"
   },
   {
     title: "button 4",
     description: "UIのボタン操作音",
-    file: "audio/electronic/button/button 4.wav",
+    file: "audio/electronic/button/button4.wav",
     tags: ["#electronic", "#ui", "#button", "#click", "#電子音", "#操作音", "#ボタン", "#クリック"],
     category: "electronic"
   },
@@ -259,28 +259,28 @@ const audioData = [
   {
     title: "correct 1",
     description: "成功・正解時の電子音",
-    file: "audio/electronic/correct/correct 1.wav",
+    file: "audio/electronic/correct/correct1.wav",
     tags: ["#electronic", "#success", "#correct", "#ui", "#電子音", "#成功音", "#正解音", "#UI音"],
     category: "electronic"
   },
   {
     title: "correct 2",
     description: "成功・正解時の電子音",
-    file: "audio/electronic/correct/correct 2.wav",
+    file: "audio/electronic/correct/correct2.wav",
     tags: ["#electronic", "#success", "#correct", "#ui", "#電子音", "#成功音", "#正解音", "#UI音"],
     category: "electronic"
   },
   {
     title: "correct 3",
     description: "成功・正解時の電子音",
-    file: "audio/electronic/correct/correct 3.wav",
+    file: "audio/electronic/correct/correct3.wav",
     tags: ["#electronic", "#success", "#correct", "#ui", "#電子音", "#成功音", "#正解音", "#UI音"],
     category: "electronic"
   },
   {
     title: "correct 4",
     description: "成功・正解時の電子音",
-    file: "audio/electronic/correct/correct 4.wav",
+    file: "audio/electronic/correct/correct4.wav",
     tags: ["#electronic", "#success", "#correct", "#ui", "#電子音", "#成功音", "#正解音", "#UI音"],
     category: "electronic"
   },
@@ -288,32 +288,32 @@ const audioData = [
   {
     title: "wrong 1",
     description: "エラー・失敗時の電子音",
-    file: "audio/electronic/wrong/wrong 1.wav",
+    file: "audio/electronic/wrong/wrong1.wav",
     tags: ["#electronic", "#error", "#wrong", "#ui", "#電子音", "#エラー音", "#失敗音", "#警告音"],
     category: "electronic"
   },
   {
     title: "wrong 2",
     description: "エラー・失敗時の電子音",
-    file: "audio/electronic/wrong/wrong 2.wav",
+    file: "audio/electronic/wrong/wrong2.wav",
     tags: ["#electronic", "#error", "#wrong", "#ui", "#電子音", "#エラー音", "#失敗音", "#警告音"],
     category: "electronic"
   },
   {
     title: "wrong 3",
     description: "エラー・失敗時の電子音",
-    file: "audio/electronic/wrong/wrong 3.wav",
+    file: "audio/electronic/wrong/wrong3.wav",
     tags: ["#electronic", "#error", "#wrong", "#ui", "#電子音", "#エラー音", "#失敗音", "#警告音"],
     category: "electronic"
   },
   {
     title: "wrong 4",
     description: "エラー・失敗時の電子音",
-    file: "audio/electronic/wrong/wrong 4.wav",
+    file: "audio/electronic/wrong/wrong4.wav",
     tags: ["#electronic", "#error", "#wrong", "#ui", "#電子音", "#エラー音", "#失敗音", "#警告音"],
     category: "electronic"
-  } 
-  ];
+  }
+];
 
 const searchInput = document.getElementById("searchInput");
 const latestList = document.getElementById("latestList");
