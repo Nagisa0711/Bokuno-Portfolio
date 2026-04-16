@@ -222,6 +222,97 @@ const audioData = [
     tags: ["#stationery", "#pen", "#write", "#paper", "#ペン", "#書く"],
     category: "pen"
   }
+  
+  // =========================
+  // electronic
+  // =========================
+
+  {
+    title: "button 1",
+    description: "UIのボタン操作音",
+    file: "audio/electronic/button/button 1.wav",
+    tags: ["#electronic", "#ui", "#button", "#click", "#電子音", "#操作音", "#ボタン", "#クリック"],
+    category: "electronic"
+  },
+  {
+    title: "button 2",
+    description: "UIのボタン操作音",
+    file: "audio/electronic/button/button 2.wav",
+    tags: ["#electronic", "#ui", "#button", "#click", "#電子音", "#操作音", "#ボタン", "#クリック"],
+    category: "electronic"
+  },
+  {
+    title: "button 3",
+    description: "UIのボタン操作音",
+    file: "audio/electronic/button/button 3.wav",
+    tags: ["#electronic", "#ui", "#button", "#click", "#電子音", "#操作音", "#ボタン", "#クリック"],
+    category: "electronic"
+  },
+  {
+    title: "button 4",
+    description: "UIのボタン操作音",
+    file: "audio/electronic/button/button 4.wav",
+    tags: ["#electronic", "#ui", "#button", "#click", "#電子音", "#操作音", "#ボタン", "#クリック"],
+    category: "electronic"
+  },
+
+  {
+    title: "correct 1",
+    description: "成功・正解時の電子音",
+    file: "audio/electronic/correct/correct 1.wav",
+    tags: ["#electronic", "#success", "#correct", "#ui", "#電子音", "#成功音", "#正解音", "#UI音"],
+    category: "electronic"
+  },
+  {
+    title: "correct 2",
+    description: "成功・正解時の電子音",
+    file: "audio/electronic/correct/correct 2.wav",
+    tags: ["#electronic", "#success", "#correct", "#ui", "#電子音", "#成功音", "#正解音", "#UI音"],
+    category: "electronic"
+  },
+  {
+    title: "correct 3",
+    description: "成功・正解時の電子音",
+    file: "audio/electronic/correct/correct 3.wav",
+    tags: ["#electronic", "#success", "#correct", "#ui", "#電子音", "#成功音", "#正解音", "#UI音"],
+    category: "electronic"
+  },
+  {
+    title: "correct 4",
+    description: "成功・正解時の電子音",
+    file: "audio/electronic/correct/correct 4.wav",
+    tags: ["#electronic", "#success", "#correct", "#ui", "#電子音", "#成功音", "#正解音", "#UI音"],
+    category: "electronic"
+  },
+
+  {
+    title: "wrong 1",
+    description: "エラー・失敗時の電子音",
+    file: "audio/electronic/wrong/wrong 1.wav",
+    tags: ["#electronic", "#error", "#wrong", "#ui", "#電子音", "#エラー音", "#失敗音", "#警告音"],
+    category: "electronic"
+  },
+  {
+    title: "wrong 2",
+    description: "エラー・失敗時の電子音",
+    file: "audio/electronic/wrong/wrong 2.wav",
+    tags: ["#electronic", "#error", "#wrong", "#ui", "#電子音", "#エラー音", "#失敗音", "#警告音"],
+    category: "electronic"
+  },
+  {
+    title: "wrong 3",
+    description: "エラー・失敗時の電子音",
+    file: "audio/electronic/wrong/wrong 3.wav",
+    tags: ["#electronic", "#error", "#wrong", "#ui", "#電子音", "#エラー音", "#失敗音", "#警告音"],
+    category: "electronic"
+  },
+  {
+    title: "wrong 4",
+    description: "エラー・失敗時の電子音",
+    file: "audio/electronic/wrong/wrong 4.wav",
+    tags: ["#electronic", "#error", "#wrong", "#ui", "#電子音", "#エラー音", "#失敗音", "#警告音"],
+    category: "electronic"
+  } 
 ];
 
 const searchInput = document.getElementById("searchInput");
