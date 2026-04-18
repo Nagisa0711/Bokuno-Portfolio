@@ -203,43 +203,59 @@ body {
 }
 
 /* =========================
-   mail-confirm page
+   mail confirm page
 ========================= */
 
-.mail-confirm-container {
-  width: min(1100px, calc(100% - 48px));
-  margin: 48px auto 72px;
+.mail-confirm-page {
+  width: min(1180px, calc(100% - 48px));
+  margin: 42px auto 72px;
   color: #f8fafc;
+}
+
+.mail-confirm-hero {
+  text-align: center;
+  margin-bottom: 28px;
 }
 
 .mail-confirm-title {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.3rem, 4vw, 3.3rem);
   font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  text-align: center;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #fff7d6;
 }
 
-.mail-confirm-lead {
-  margin: 14px auto 36px;
-  text-align: center;
-  font-size: 1.02rem;
-  color: rgba(255, 255, 255, 0.82);
-  line-height: 1.8;
+.mail-confirm-subtitle {
+  margin: 12px auto 0;
   max-width: 760px;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.mail-confirm-card,
+.mail-confirm-info-card {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.mail-confirm-card {
+  padding: 28px 24px;
 }
 
 .mail-confirm-form {
-  margin: 0 auto;
-  max-width: 1100px;
+  width: 100%;
 }
 
 .mail-confirm-label {
   display: block;
   margin: 0 0 14px;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #ffffff;
 }
 
@@ -252,46 +268,45 @@ body {
 .mail-confirm-input {
   flex: 1;
   min-width: 0;
-  height: 64px;
+  height: 66px;
   padding: 0 22px;
-  border-radius: 20px;
+  border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.06);
   color: #ffffff;
   font-size: 1rem;
   outline: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .mail-confirm-input::placeholder {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.48);
 }
 
 .mail-confirm-input:focus {
-  border-color: rgba(96, 165, 250, 0.9);
+  border-color: rgba(96, 165, 250, 0.95);
   background: rgba(255, 255, 255, 0.09);
-  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.13);
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.14);
 }
 
 .mail-confirm-button {
-  flex-shrink: 0;
-  height: 64px;
-  padding: 0 26px;
+  height: 66px;
+  padding: 0 28px;
   border: none;
-  border-radius: 20px;
+  border-radius: 18px;
   background: linear-gradient(180deg, #3b82f6, #2563eb);
   color: #ffffff;
   font-size: 1rem;
   font-weight: 800;
   cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
   box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
 .mail-confirm-button:hover {
+  opacity: 0.96;
   transform: translateY(-1px);
-  opacity: 0.97;
 }
 
 .mail-confirm-button:active {
@@ -300,74 +315,83 @@ body {
 
 .mail-confirm-message {
   min-height: 24px;
-  margin: 14px 4px 0;
-  font-size: 0.95rem;
+  margin: 14px 2px 0;
   color: #cbd5e1;
+  font-size: 0.95rem;
 }
 
-/* 下の説明カード */
-.mail-confirm-help {
-  margin-top: 34px;
+.mail-confirm-info-card {
+  margin-top: 28px;
+  padding: 24px;
 }
 
-.mail-confirm-help-box {
-  padding: 26px 24px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+.mail-confirm-info-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
-.mail-confirm-help-box h2 {
-  margin: 0 0 16px;
-  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+.mail-confirm-info-head h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 900;
   color: #fff7d6;
   letter-spacing: -0.02em;
 }
 
-.mail-confirm-help-box p {
-  margin: 0;
+.mail-confirm-info-head span {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.mail-confirm-info-body p {
+  margin: 0 0 14px;
+  line-height: 1.95;
   font-size: 1rem;
-  line-height: 2;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.mail-confirm-info-body p:last-child {
+  margin-bottom: 0;
 }
 
 .mail-confirm-warning {
-  margin-top: 16px !important;
-  padding-top: 16px;
+  padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: #ffd4d4 !important;
   font-weight: 700;
 }
 
-/* スマホ */
 @media (max-width: 860px) {
-  .mail-confirm-container {
-    width: min(100%, calc(100% - 28px));
-    margin: 28px auto 48px;
+  .mail-confirm-page {
+    width: min(100%, calc(100% - 24px));
+    margin: 24px auto 48px;
+  }
+
+  .mail-confirm-card,
+  .mail-confirm-info-card {
+    padding: 18px;
+    border-radius: 18px;
   }
 
   .mail-confirm-input-row {
     flex-direction: column;
   }
 
-  .mail-confirm-input,
   .mail-confirm-button {
     width: 100%;
   }
 
-  .mail-confirm-button {
-    padding: 0 20px;
+  .mail-confirm-info-head {
+    gap: 8px;
   }
 
-  .mail-confirm-help-box {
-    padding: 22px 18px;
-    border-radius: 20px;
-  }
-
-  .mail-confirm-help-box p {
-    line-height: 1.9;
-    font-size: 0.96rem;
+  .mail-confirm-info-body p,
+  .mail-confirm-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.85;
   }
 }
