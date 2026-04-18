@@ -7,41 +7,51 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <section class="mail-confirm-container">
-    <h1 class="mail-confirm-title">メール認証</h1>
-    <p class="mail-confirm-lead">
-      認証用のメールを受け取るために、メールアドレスをご入力ください。
-    </p>
+  <main class="mail-confirm-page">
+    <section class="mail-confirm-hero">
+      <h1 class="mail-confirm-title">メール認証</h1>
+      <p class="mail-confirm-subtitle">
+        認証用のメールを受け取るために、メールアドレスをご入力ください
+      </p>
+    </section>
 
-    <form id="mail-auth-form" class="mail-confirm-form">
-      <label for="user_email" class="mail-confirm-label">
-        あなたのメールアドレスをこちらにご入力ください
-      </label>
+    <section class="mail-confirm-card">
+      <form id="mail-auth-form" class="mail-confirm-form">
+        <label for="user_email" class="mail-confirm-label">
+          あなたのメールアドレスをこちらにご入力ください
+        </label>
 
-      <div class="mail-confirm-input-row">
-        <input
-          type="email"
-          id="user_email"
-          name="user_email"
-          class="mail-confirm-input"
-          placeholder="例: example@email.com"
-          required
-          autocomplete="email"
-        />
+        <div class="mail-confirm-input-row">
+          <input
+            type="email"
+            id="user_email"
+            name="user_email"
+            class="mail-confirm-input"
+            placeholder="検索例みたいに見やすく入力できます"
+            required
+            autocomplete="email"
+          />
 
-        <button type="submit" class="mail-confirm-button">
-          確認用メールを送る
-        </button>
-      </div>
-    </form>
+          <button type="submit" class="mail-confirm-button">
+            確認用メールを送る
+          </button>
+        </div>
+      </form>
 
-    <p id="result" class="mail-confirm-message"></p>
+      <p id="result" class="mail-confirm-message"></p>
+    </section>
 
-    <div class="mail-confirm-help">
-      <div class="mail-confirm-help-box">
+    <section class="mail-confirm-info-card">
+      <div class="mail-confirm-info-head">
         <h2>ご利用について</h2>
+        <span>お問い合わせ・リクエスト案内</span>
+      </div>
+
+      <div class="mail-confirm-info-body">
         <p>
           このページでは、音源の追加リクエストや、サイト運営者へのご質問を気軽にメールで送ることができます。
+        </p>
+        <p>
           内容によっては、確認や制作の都合により、反映まで数日〜1週間以上お時間をいただく場合があります。
           また、内容によっては対応できない場合や、返信を行えない場合もございますので、あらかじめご了承ください。
         </p>
@@ -49,8 +59,8 @@
           悪意のある内容、迷惑行為、虚偽の情報の送信はご遠慮ください。
         </p>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <script type="module" src="mail-confirm.js"></script>
 </body>
