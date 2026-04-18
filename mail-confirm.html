@@ -7,26 +7,48 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <section class="section-block">
-    <div class="section-title-row">
-      <h2>メール認証</h2>
-      <span class="section-sub">確認用メールを送信します</span>
-    </div>
+  <section class="mail-confirm-container">
+    <h1 class="mail-confirm-title">メール認証</h1>
 
-    <form id="mail-auth-form">
+    <p class="mail-confirm-lead">
+      認証用のメールを受け取るために、メールアドレスをご入力ください。
+    </p>
+
+    <form id="mail-auth-form" class="mail-confirm-form">
+      <label for="user_email" class="mail-confirm-label">
+        あなたのメールアドレスをこちらにご入力ください
+      </label>
+
       <input
         type="email"
         id="user_email"
         name="user_email"
+        class="mail-confirm-input"
         placeholder="メールアドレス"
         required
         autocomplete="email"
       />
-      <br><br>
-      <button type="submit">確認メールを送る</button>
+
+      <button type="submit" class="mail-confirm-button">
+        確認用メールを送る
+      </button>
     </form>
 
-    <p id="result"></p>
+    <p id="result" class="mail-confirm-message"></p>
+
+    <div class="mail-confirm-help">
+      <div class="mail-confirm-help-box">
+        <h2>ご利用について</h2>
+        <p>
+          このページでは、音源の追加リクエストや、サイト運営者へのご質問を気軽にメールで送ることができます。
+          内容によっては、確認や制作の都合により、反映まで数日〜1週間以上お時間をいただく場合があります。
+          また、内容によっては対応できない場合や、返信を行えない場合もございますので、あらかじめご了承ください。
+        </p>
+        <p class="mail-confirm-warning">
+          悪意のある内容、迷惑行為、虚偽の情報の送信はご遠慮ください。
+        </p>
+      </div>
+    </div>
   </section>
 
   <script type="module" src="mail-confirm.js"></script>
