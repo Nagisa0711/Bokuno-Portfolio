@@ -1,0 +1,70 @@
+/* 下部のヘルプ・規約系エリア */
+.mail-confirm-help {
+  margin-top: 34px;
+  display: grid;
+  gap: 16px;
+}
+
+/* 各説明ボックス */
+.mail-confirm-help-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 20px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* 見出し */
+.mail-confirm-help-box h2 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #93c5fd;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* 本文 */
+.mail-confirm-help-box p {
+  margin: 0;
+  line-height: 1.95;
+  font-size: 0.96rem;
+  color: #e5e7eb;
+  text-align: center;
+}
+
+/* 警告文 */
+.mail-confirm-warning {
+  margin-top: 14px !important;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fca5a5 !important;
+  font-weight: 700;
+  font-size: 0.94rem;
+}
+
+/* スマホ調整 */
+@media (max-width: 640px) {
+  .mail-confirm-help {
+    margin-top: 28px;
+    gap: 14px;
+  }
+
+  .mail-confirm-help-box {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .mail-confirm-help-box h2 {
+    font-size: 1rem;
+  }
+
+  .mail-confirm-help-box p {
+    font-size: 0.93rem;
+    line-height: 1.85;
+  }
+
+  .mail-confirm-warning {
+    font-size: 0.9rem;
+  }
+}
