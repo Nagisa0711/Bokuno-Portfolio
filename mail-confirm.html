@@ -9,7 +9,6 @@
 <body>
   <section class="mail-confirm-container">
     <h1 class="mail-confirm-title">メール認証</h1>
-
     <p class="mail-confirm-lead">
       認証用のメールを受け取るために、メールアドレスをご入力ください。
     </p>
@@ -19,19 +18,21 @@
         あなたのメールアドレスをこちらにご入力ください
       </label>
 
-      <input
-        type="email"
-        id="user_email"
-        name="user_email"
-        class="mail-confirm-input"
-        placeholder="メールアドレス"
-        required
-        autocomplete="email"
-      />
+      <div class="mail-confirm-input-row">
+        <input
+          type="email"
+          id="user_email"
+          name="user_email"
+          class="mail-confirm-input"
+          placeholder="例: example@email.com"
+          required
+          autocomplete="email"
+        />
 
-      <button type="submit" class="mail-confirm-button">
-        確認用メールを送る
-      </button>
+        <button type="submit" class="mail-confirm-button">
+          確認用メールを送る
+        </button>
+      </div>
     </form>
 
     <p id="result" class="mail-confirm-message"></p>
