@@ -144,13 +144,17 @@ form?.addEventListener("submit", async (e) => {
       result.textContent = "";
     }
 
-    await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form);
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form);
 
     if (result) {
-      result.textContent = "送信が完了しました。";
+      result.textContent = "送信が完了しました。トップページへ戻ります...";
     } else {
       alert("送信成功");
     }
+
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1500);
 
     form.reset();
 
@@ -160,7 +164,6 @@ form?.addEventListener("submit", async (e) => {
     }
   } catch (err) {
     console.error(err);
-
     if (result) {
       result.textContent = "送信に失敗しました。時間をおいて再度お試しください。";
     } else {
